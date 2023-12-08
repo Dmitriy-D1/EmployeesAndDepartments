@@ -24,7 +24,7 @@ public class Department {
     protected static void callDepartmentTable() {
         JFrame frame = new JFrame("Department");
         frame.setContentPane(new Department().DepartmentMainTable);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
@@ -94,7 +94,11 @@ public class Department {
     private Department() {
         table_load();
         saveButton.addActionListener(e -> {
-            int manager = Integer.parseInt(txtManager.getText());
+            int manager;
+            if (txtManager.getText().isEmpty()){
+                manager = 1;
+            } else manager = Integer.parseInt(txtManager.getText());
+
             String department = txtDepartment.getText();
             String phone = txtPhone.getText();
             String email = txtEmail.getText();

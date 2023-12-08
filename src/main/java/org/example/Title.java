@@ -22,7 +22,7 @@ public class Title {
     protected static void callTitleTable() {
         JFrame frame = new JFrame("Title");
         frame.setContentPane(new Title().TitleMainTable);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
@@ -106,7 +106,7 @@ public class Title {
 
             try (Connection connection = Connect.getConnetion();
                  PreparedStatement pst = connection.prepareStatement("UPDATE title " +
-                         "SET job_title = ?, salary = ?" +
+                         "SET job_title = ?, salary = ? " +
                          "WHERE title_id = ?")) {
                 pst.setString(1, title);
                 pst.setInt(2, salary);
